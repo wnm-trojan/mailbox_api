@@ -73,10 +73,3 @@ openapi.json
 
 # Ignore test artifacts
 test-results/
-
-
-app/models/user.py
-app/schemas/user_schema.py
-app/services/auth_service.py
-app/core/security.py
-app/api/v1/auth.py
