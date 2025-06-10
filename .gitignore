@@ -75,8 +75,8 @@ openapi.json
 test-results/
 
 
-models/user.py
-schemas/user_schema.py
-services/auth_service.py
-core/security.py
+app/models/user.py
+app/schemas/user_schema.py
+app/services/auth_service.py
+app/core/security.py
 app/api/v1/auth.py
