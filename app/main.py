@@ -7,10 +7,10 @@ Description: Main entry point for the FastAPI application.
 """
 
 from fastapi import FastAPI
-from app.api.v1 import auth
+from app.api.v1 import auth, messages
 
 app = FastAPI()
 
-app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
-#app.include_router(messages.router, prefix="/messages", tags=["Messages"])
+app.include_router(auth.router, prefix="/v1/auth", tags=["Authentication"])
+app.include_router(messages.router, prefix="/v1/messages", tags=["Messages"])
 #app.include_router(gmail.router, prefix="/gmail", tags=["Gmail"])
