@@ -7,12 +7,14 @@ Description: This component listens to messages from the Kafka topic (e.g., mail
 """
 
 import json
+import asyncio
 from confluent_kafka import Consumer, KafkaException
 from sqlalchemy.orm import Session
 from app.db.database import SessionLocal
 from app.models.message import Message
 from app.kafka.topics import MESSAGE_TOPIC
 from app.config import settings
+from app.core.notifier import notifier
 
 # Kafka consumer setup
 conf = {
@@ -36,6 +38,8 @@ def save_to_db(data: dict):
         db.add(message)
         db.commit()
         print(f"✅ Message saved from {data['sender']} to {data['receiver']}")
+        # 🔔 Notify via WebSocket
+        asyncio.run(notifier.notify_all("📨 New message received!"))
     except Exception as e:
         db.rollback()
         print(f"❌ DB error: {e}")
