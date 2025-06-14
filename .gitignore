@@ -74,5 +74,5 @@ openapi.json
 # Ignore test artifacts
 test-results/
 
-# Ignore configuration files
+# Secrets
 app/config/client_secret.json
