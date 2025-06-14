@@ -75,4 +75,4 @@ openapi.json
 test-results/
 
 # Ignore configuration files
-config/client_config.json
+app/config/client_secret.json
