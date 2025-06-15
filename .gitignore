@@ -73,3 +73,6 @@ openapi.json
 
 # Ignore test artifacts
 test-results/
+
+# Secrets
+app/config/client_secret.json
