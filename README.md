@@ -117,6 +117,34 @@ Install Redis using your package manager:
 
 Refer to the official documentation for more details on configuration and management.
 
+## Alembic Setup
+
+Alembic is used for handling database migrations.
+
+### a. Install Alembic
+
+```bash
+pip install alembic
+alembic init alembic
+```
+
+### b. Configure Database URL
+
+Edit `alembic.ini` and set your database URL:
+
+```ini
+sqlalchemy.url = postgresql://postgres:postgres@postgres:5432/mailbox_db
+```
+
+### c. Create and Apply Migrations
+
+Generate and apply your initial migration:
+
+```bash
+alembic revision --autogenerate -m "init schema"
+alembic upgrade head
+```
+
 ## License
 
 MIT License
