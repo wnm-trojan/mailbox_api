@@ -1,7 +1,6 @@
 # Mailbox API
 
-A simple FastAPI-based mailbox API for managing and sending emails.
-This is a mailbox system using Kafka that involves building a scalable and efficient messaging system where users can send, receive, and store messages.
+A simple FastAPI-based mailbox API for managing and sending emails. This mailbox system using Kafka involves building a scalable and efficient messaging system where users can send, receive, and store messages.
 
 ## Features
 
