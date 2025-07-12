@@ -6,7 +6,7 @@ Email: warunanissanka44@gmail.com
 Description: 
 """
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
 class MessageCreate(BaseModel):
@@ -16,11 +16,9 @@ class MessageCreate(BaseModel):
     body: str
 
 class MessageOut(BaseModel):
-    id: int
     sender: str
     receiver: str
-    subject: Optional[str]
+    subject: str | None
     body: str
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)

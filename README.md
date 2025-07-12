@@ -86,6 +86,7 @@ bin/zkServer.sh start
 or 
 
 ```bash
+cd kafka_2.13-3.6.1
 bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 
@@ -96,6 +97,13 @@ Download and extract [Apache Kafka](https://kafka.apache.org/downloads):
 ```bash
 tar -xzf kafka_*.tgz
 cd kafka_*/
+bin/kafka-server-start.sh config/server.properties
+```
+
+or
+
+```bash
+cd kafka_2.13-3.6.1
 bin/kafka-server-start.sh config/server.properties
 ```
 
@@ -144,6 +152,41 @@ Generate and apply your initial migration:
 alembic revision --autogenerate -m "init schema"
 alembic upgrade head
 ```
+
+## You need to run this app
+
+### Run it without docker (Using linux OS)
+First you have to run kafka 
+```bash
+cd kafka_2.13-3.6.1
+bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+```bash
+cd kafka_2.13-3.6.1
+bin/kafka-server-start.sh config/server.properties
+```
+Then you should start postgresql server and radis
+```bash
+    sudo systemctl start postgresql
+    sudo systemctl start redis
+```
+Now You can run your FastApi App
+* Go to you python venv
+```bash
+    source venv/bin/activate
+```
+* Run your app
+```bash
+    uvicorn app.main:app --reload
+```
+Then you should run your kafka consumer service
+* Go to you python venv and then
+```bash
+    python consumer_service.py
+```
+Now you test your FastApi mailbox app using below url
+- The API will be available at: [http://localhost:8000](http://localhost:8000)
+- Interactive docs: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ## License
 
